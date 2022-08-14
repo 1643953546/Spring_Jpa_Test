@@ -56,11 +56,21 @@ public class StudentJpaTest {
         System.out.println(students);
     }
 
+    //多条件与查询
     @Test
     public void findByStudentNameAndPassword(){
         String name="huang2";
         String password="1232";
         Student byNameAndPassword = studentRepository.findByNameAndPassword(name, password);
         System.out.println(byNameAndPassword);
+    }
+
+    //多条件或查询
+    @Test
+    public void findByStudentNameOrPassword(){
+        String name="huang1";
+        String password="1232";
+        List<Student> byNameOrPassword = studentRepository.findByNameOrPassword(name, password);
+        System.out.println(byNameOrPassword);
     }
 }
