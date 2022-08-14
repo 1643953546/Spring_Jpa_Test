@@ -2,9 +2,13 @@ package com.example.test_rumen.jpa;
 
 import com.example.test_rumen.entity.Student;
 import com.example.test_rumen.repository.StudentRepository;
+import javafx.print.PageRange;
 import org.junit.jupiter.api.Test;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -51,6 +55,7 @@ public class StudentJpaTest {
     }
 
     @Test
+    //查询所有
     public void findAll(){
         List<Student> students = studentRepository.findAll();
         System.out.println(students);
@@ -72,5 +77,65 @@ public class StudentJpaTest {
         String password="1232";
         List<Student> byNameOrPassword = studentRepository.findByNameOrPassword(name, password);
         System.out.println(byNameOrPassword);
+    }
+
+    //总数查询
+    @Test
+    public void findCount(){
+        long count = studentRepository.count();
+        System.out.println(count);
+    }
+
+    @Test
+    //根据字段查询总数
+    public void findCountByName(){
+        String password="1234";
+        Integer countByPassword = studentRepository.countByPassword(password);
+        System.out.println(countByPassword);
+    }
+
+    @Test
+    //模糊查询
+    public void findByNameLike(){
+        String name="%huang%";
+        //这个查询要加上%
+        List<Student> byNameLike = studentRepository.findByNameLike(name);
+        System.out.println(byNameLike);
+    }
+
+    @Test
+    //between查询
+    public void findByIdBetween(){
+        Integer lowNow=1;
+        Integer highNow=4;
+        List<Student> byIdBetween = studentRepository.findByIdBetween(lowNow, highNow);
+        System.out.println(byIdBetween);
+    }
+
+
+    @Test
+    //排序
+    public void findAllByPage(){
+        //升序
+        List<Student> studentsASC = studentRepository.findByOrderByIdAsc();
+        System.out.println(studentsASC);
+
+        //降序
+        List<Student> studentsDesc = studentRepository.findByOrderByIdDesc();
+        System.out.println(studentsDesc);
+    }
+
+
+    @Test
+    //分页也就是limit
+    //分页加排序
+    public void findByLimit(){
+        Integer page=1;
+        Integer pageSize=2;
+
+        //第一种
+        PageRequest pageRequest = PageRequest.of(page-1, pageSize);
+        List<Student> byOrderByIdDesc = studentRepository.findByOrderByIdDesc(pageRequest);
+        System.out.println(byOrderByIdDesc);
     }
 }
