@@ -18,7 +18,7 @@ public class Student {
 
     private String name;
 
-    private String pssword;
+    private String password;
 
     private Integer status;
 
@@ -40,12 +40,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getPssword() {
-        return pssword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPssword(String pssword) {
-        this.pssword = pssword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getStatus() {
@@ -67,10 +67,10 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String name, String pssword, Integer status, Timestamp date) {
+    public Student(int id, String name, String password, Integer status, Timestamp date) {
         this.id = id;
         this.name = name;
-        this.pssword = pssword;
+        this.password = password;
         this.status = status;
         this.date = date;
     }
@@ -80,7 +80,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", pssword='" + pssword + '\'' +
+                ", password='" + password + '\'' +
                 ", status=" + status +
                 ", date=" + date +
                 '}';

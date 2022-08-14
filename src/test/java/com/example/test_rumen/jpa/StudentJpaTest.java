@@ -19,27 +19,27 @@ public class StudentJpaTest {
     public void save(){
         Student student1=new Student();
         student1.setName("huang1");
-        student1.setPssword("1231");
+        student1.setPassword("1231");
         student1.setDate(new Timestamp(new Date().getTime()));
 
         Student student2=new Student();
         student2.setName("huang2");
-        student2.setPssword("1232");
+        student2.setPassword("1232");
         student2.setDate(new Timestamp(new Date().getTime()));
 
         Student student3=new Student();
         student3.setName("huang3");
-        student3.setPssword("1233");
+        student3.setPassword("1233");
         student3.setDate(new Timestamp(new Date().getTime()));
 
         Student student4=new Student();
         student4.setName("huang4");
-        student4.setPssword("1234");
+        student4.setPassword("1234");
         student4.setDate(new Timestamp(new Date().getTime()));
 
         Student student5=new Student();
         student5.setName("huang5");
-        student5.setPssword("125");
+        student5.setPassword("125");
         student5.setDate(new Timestamp(new Date().getTime()));
 
         studentRepository.save(student1);
@@ -54,5 +54,13 @@ public class StudentJpaTest {
     public void findAll(){
         List<Student> students = studentRepository.findAll();
         System.out.println(students);
+    }
+
+    @Test
+    public void findByStudentNameAndPassword(){
+        String name="huang2";
+        String password="1232";
+        Student byNameAndPassword = studentRepository.findByNameAndPassword(name, password);
+        System.out.println(byNameAndPassword);
     }
 }
