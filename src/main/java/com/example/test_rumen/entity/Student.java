@@ -11,9 +11,6 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "student")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,5 +62,27 @@ public class Student {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public Student() {
+    }
+
+    public Student(int id, String name, String pssword, Integer status, Timestamp date) {
+        this.id = id;
+        this.name = name;
+        this.pssword = pssword;
+        this.status = status;
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pssword='" + pssword + '\'' +
+                ", status=" + status +
+                ", date=" + date +
+                '}';
     }
 }

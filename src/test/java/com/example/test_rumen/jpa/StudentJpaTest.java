@@ -53,5 +53,6 @@ public class StudentJpaTest {
     @Test
     public void findAll(){
         List<Student> students = studentRepository.findAll();
+        System.out.println(students);
     }
 }
